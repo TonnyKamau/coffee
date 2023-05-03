@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       "Latte",
       "Espresso",
     ];
-    
+
     Cappuccino cappuccino = Cappuccino.cappuccinos[0];
     return DefaultTabController(
       initialIndex: 0,
@@ -114,25 +114,40 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    TabBar(
-                      isScrollable: true,
-                      indicatorColor: Colors.transparent,
-                      unselectedLabelColor: Colors.grey.shade400,
-                      tabs: tabs
-                          .map(
-                            (e) => Tab(
-                              child: Text(
-                                e,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium!
-                                    .copyWith(
-                                      color: Colors.black,
+                    Material(
+                      color: Colors.transparent,
+                      child: TabBar(
+                        isScrollable: false,
+                        indicatorSize: TabBarIndicatorSize.tab,
+                        indicator: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors
+                              .green.shade900, // selected tab background color
+                        ),
+                        unselectedLabelColor: Colors.grey.shade400,
+                        tabs: tabs
+                            .map(
+                              (e) => Tab(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment
+                                      .center, // align contents to center
+                                  children: [
+                                    const Icon(
+                                      Icons.coffee,
                                     ),
+                                    const SizedBox(
+                                        width:
+                                            5), // add some spacing between icon and text
+                                    Text(e,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium),
+                                  ],
+                                ),
                               ),
-                            ),
-                          )
-                          .toList(),
+                            )
+                            .toList(),
+                      ),
                     ),
                     const SizedBox(
                       height: 20,
