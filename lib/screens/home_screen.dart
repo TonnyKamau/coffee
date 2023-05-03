@@ -1,3 +1,4 @@
+import 'package:coffee/models/cappuccino_model.dart';
 import 'package:coffee/widgets/app_bar_title.dart';
 import 'package:flutter/material.dart';
 
@@ -9,13 +10,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> tabs = [
-      "cappuccino",
-      "latte",
-      "espresso",
-      "mocha",
-      "americano",
-      "macchiato",
+      "Cappuccino",
+      "Latte",
+      "Espresso",
     ];
+    
+    Cappuccino cappuccino = Cappuccino.cappuccinos[0];
     return DefaultTabController(
       initialIndex: 0,
       length: tabs.length,
@@ -55,11 +55,10 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     Text(
                       "Good Morning, David",
-                      style:
-                          Theme.of(context).textTheme.headlineSmall!.copyWith(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                     const SizedBox(
                       height: 20,
@@ -101,7 +100,103 @@ class HomeScreen extends StatelessWidget {
                           borderSide: BorderSide.none,
                         ),
                       ),
-                    )
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "Categories",
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TabBar(
+                      isScrollable: true,
+                      indicatorColor: Colors.transparent,
+                      unselectedLabelColor: Colors.grey.shade400,
+                      tabs: tabs
+                          .map(
+                            (e) => Tab(
+                              child: Text(
+                                e,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .copyWith(
+                                      color: Colors.black,
+                                    ),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      height: 200,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 6,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 150,
+                            decoration: BoxDecoration(
+                              color: Colors.brown.shade300,
+                              borderRadius: BorderRadius.circular(
+                                  20), // half of the width or height
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  tabs[0],
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        color: Colors.white,
+                                      ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "Cappuccino is a coffee-based drink made primarily from espresso and milk.",
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .copyWith(
+                                        color: Colors.white,
+                                      ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "\$ 4.99",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        color: Colors.white,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                   ],
                 ),
               ),
