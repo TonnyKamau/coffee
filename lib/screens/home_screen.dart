@@ -120,44 +120,35 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    Material(
-                      color: Colors.transparent,
-                      child: TabBar(
-                        isScrollable: true,
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        indicator: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.green.shade900,
-                        ),
-                        unselectedLabelColor: Colors.black,
-                        labelColor: Colors.white,
-                        tabs: tabs
-                            .map(
-                              (e) => Tab(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      icons[tabs.indexOf(e)],
-                                      color: Colors.black,
-                                    ),
-                                    const SizedBox(width: 5),
-                                    Text(
-                                      e,
+                    TabBar(
+                      splashFactory: NoSplash.splashFactory,
+                      isScrollable: true,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      indicator: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.green.shade900,
+                      ),
+                      unselectedLabelColor: Colors.black,
+                      labelColor: Colors.white,
+                      tabs: tabs
+                          .map(
+                            (e) => Tab(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    icons[tabs.indexOf(e)],
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Text(e,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodySmall!
-                                          .copyWith(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                    ),
-                                  ],
-                                ),
+                                          .bodyMedium),
+                                ],
                               ),
-                            )
-                            .toList(),
-                      ),
+                            ),
+                          )
+                          .toList(),
                     ),
                     const SizedBox(
                       height: 20,
