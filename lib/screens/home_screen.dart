@@ -195,7 +195,7 @@ class _Categories extends StatelessWidget {
                                 Container(
                                   padding: const EdgeInsets.all(8.0),
                                   decoration: BoxDecoration(
-                                    color: Colors.black,
+                                    color: Colors.green.shade800,
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: const Icon(
