@@ -10,7 +10,7 @@ class ImageContainer extends StatelessWidget {
   final Widget? child;
   const ImageContainer({
     Key? key,
-    required this.height,
+    this.height = 0.0,
     required this.width,
     required this.imageUrl,
     this.padding,
@@ -18,7 +18,6 @@ class ImageContainer extends StatelessWidget {
     this.borderRadius,
     this.child,
   }) : super(key: key);
- 
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,6 @@ class ImageContainer extends StatelessWidget {
         ),
       ),
       child: child,
-      
     );
   }
 }

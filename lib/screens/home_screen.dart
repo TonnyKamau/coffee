@@ -113,61 +113,126 @@ class _Categories extends StatelessWidget {
             height: 20,
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.45,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: cappuccino.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: const EdgeInsets.only(right: 10),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.4,
+            height: MediaQuery.of(context).size.height * 0.5,
+            child: TabBarView(children: [
+              ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: cappuccino.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: const EdgeInsets.only(right: 10),
                     decoration: BoxDecoration(
-                      color: Colors.brown.shade300,
-                      borderRadius: BorderRadius.circular(
-                          30), // half of the width or height
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color.fromARGB(255, 234, 231, 231)
+                              .withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            tabs[0],
-                            style:
-                                Theme.of(context).textTheme.titleMedium!.copyWith(
-                                      color: Colors.white,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(
+                            30), // half of the width or height
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: ImageContainer(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                imageUrl: cappuccino[index].image,
+                                borderRadius: 30,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 8.0, right: 8.0, bottom: 4.0,top: 4.0),
+                              child: Text(
+                                tabs[0],
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                     ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            cappuccino[index].description,
-                            style:
-                                Theme.of(context).textTheme.bodySmall!.copyWith(
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 8.0, right: 8.0, bottom: 8.0),
+                              child: Text(
+                                cappuccino[index].description,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall!
+                                    .copyWith(
+                                      color: Colors.black,
+                                    ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 8.0, right: 8.0, bottom: 8.0, top: 2.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    cappuccino[index].price,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge!
+                                        .copyWith(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.all(8.0),
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: const Icon(
+                                      Icons.add,
                                       color: Colors.white,
                                     ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "\$ 4.99",
-                            style:
-                                Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                      color: Colors.white,
-                                    ),
-                          ),
-                        ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
-            ),
+                  );
+                },
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.45,
+                width: MediaQuery.of(context).size.width * 0.8,
+                color: Colors.red,
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.45,
+                width: MediaQuery.of(context).size.width * 0.8,
+                color: Colors.green,
+              ),
+            ]),
           ),
         ],
       ),
