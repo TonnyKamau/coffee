@@ -1,9 +1,8 @@
-import 'package:coffee/models/cappuccino_model.dart';
-
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../models/model.dart';
 import '../widgets/widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -23,7 +22,6 @@ class HomeScreen extends StatelessWidget {
       Icons.coffee_maker,
     ];
 
-    Cappuccino cappuccino = Cappuccino.cappuccinos[0];
     return DefaultTabController(
       initialIndex: 0,
       length: tabs.length,
@@ -119,97 +117,11 @@ class _Categories extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: cappuccino.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.only(right: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color.fromARGB(255, 234, 231, 231)
-                              .withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 5,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(
-                            30), // half of the width or height
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: ImageContainer(
-                                width: MediaQuery.of(context).size.width * 0.4,
-                                imageUrl: cappuccino[index].image,
-                                borderRadius: 30,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              tabs[0],
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              cappuccino[index].description,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall!
-                                  .copyWith(
-                                    color: Colors.black,
-                                  ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  cappuccino[index].price,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium!
-                                      .copyWith(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.all(8.0),
-                                  decoration: BoxDecoration(
-                                    color: Colors.green.shade800,
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: const Icon(
-                                    Icons.add,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
+                  return CoffeeCard(
+                      title: tabs[0],
+                      description: cappuccino[index].description,
+                      price: cappuccino[index].price,
+                      imageUrl: cappuccino[index].image);
                 },
               ),
               Container(
