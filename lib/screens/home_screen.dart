@@ -35,6 +35,7 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
+        bottomNavigationBar: _CustomBottomNavigationBar(),
       ),
     );
   }
@@ -91,6 +92,8 @@ class _Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cappuccino = Cappuccino.cappuccinos;
+    final latte = Latte.lattes;
+    final espresso = Espresso.espressos;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -124,15 +127,27 @@ class _Categories extends StatelessWidget {
                       imageUrl: cappuccino[index].image);
                 },
               ),
-              Container(
-                height: MediaQuery.of(context).size.height * 0.45,
-                width: MediaQuery.of(context).size.width * 0.8,
-                color: Colors.red,
+              ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: latte.length,
+                itemBuilder: (context, index) {
+                  return CoffeeCard(
+                      title: tabs[1],
+                      description: latte[index].description,
+                      price: latte[index].price,
+                      imageUrl: latte[index].image);
+                },
               ),
-              Container(
-                height: MediaQuery.of(context).size.height * 0.45,
-                width: MediaQuery.of(context).size.width * 0.8,
-                color: Colors.green,
+              ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: espresso.length,
+                itemBuilder: (context, index) {
+                  return CoffeeCard(
+                      title: tabs[2],
+                      description: espresso[index].description,
+                      price: espresso[index].price,
+                      imageUrl: espresso[index].image);
+                },
               ),
             ]),
           ),
@@ -202,6 +217,42 @@ class _Discover extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _CustomBottomNavigationBar extends StatelessWidget {
+  const _CustomBottomNavigationBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
+      selectedItemColor: Colors.green.shade800,
+      unselectedItemColor: Colors.grey.shade500,
+      items: const [
+        BottomNavigationBarItem(
+          icon: FaIcon(FontAwesomeIcons.house),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: FaIcon(FontAwesomeIcons.heart),
+          label: 'Favorite',
+        ),
+        BottomNavigationBarItem(
+          icon: FaIcon(FontAwesomeIcons.cartShopping),
+          label: 'Cart',
+        ),
+        BottomNavigationBarItem(
+          icon: FaIcon(FontAwesomeIcons.user),
+          label: 'Profile',
+        ),
+      ],
+      currentIndex: 0,
     );
   }
 }
