@@ -45,6 +45,7 @@ class CoffeeCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
+                // to build a budge
                 child: ImageContainer(
                   width: MediaQuery.of(context).size.width * 0.4,
                   imageUrl: imageUrl,
