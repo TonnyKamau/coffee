@@ -12,7 +12,7 @@ class BarTitle extends StatelessWidget {
       children: [
         FaIcon(
           FontAwesomeIcons.locationDot,
-          color: Colors.green.shade900,
+          color: Colors.green.shade800,
           size: 20,
         ),
         const SizedBox(
