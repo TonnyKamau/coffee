@@ -1,8 +1,10 @@
 import 'package:coffee/models/cappuccino_model.dart';
-import 'package:coffee/widgets/app_bar_title.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../widgets/widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -26,199 +28,212 @@ class HomeScreen extends StatelessWidget {
       initialIndex: 0,
       length: tabs.length,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          leading: const Padding(
-            padding: EdgeInsets.all(10.0),
-            child: CircleAvatar(
-              radius: 20,
-              backgroundImage: NetworkImage(
-                  "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmVyZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"),
-            ),
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 12.0),
-              child: IconButton(
-                onPressed: () {},
-                icon: FaIcon(
-                  FontAwesomeIcons.bell,
-                  color: Colors.grey.shade500,
-                ),
-              ),
-            ),
-          ],
-          title: const BarTitle(),
-        ),
+        appBar: const _CustomAppBar(),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Good Morning, David",
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        hintText: "Search Coffee",
-                        hintStyle:
-                            Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                  color: Colors.grey.shade500,
-                                ),
-                        prefixIcon: const Icon(
-                          Icons.search,
-                          color: Colors.black,
-                        ),
-                        suffixIcon: Container(
-                          margin: const EdgeInsets.only(
-                              right: 5, bottom: 5, top: 5),
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: Colors.brown.shade300,
-                            borderRadius: BorderRadius.circular(
-                                20), // half of the width or height
-                          ),
-                          child: const Icon(
-                            Icons.tune,
-                            color: Colors.white,
-                          ),
-                        ),
-                        filled: true,
-                        fillColor: Colors.grey.shade100,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: BorderSide.none,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: BorderSide.none,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Categories",
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    TabBar(
-                      splashFactory: NoSplash.splashFactory,
-                      isScrollable: true,
-                      indicatorSize: TabBarIndicatorSize.tab,
-                      indicator: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: Colors.green.shade900,
-                      ),
-                      unselectedLabelColor: Colors.black,
-                      labelColor: Colors.white,
-                      tabs: tabs
-                          .map(
-                            (e) => Tab(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    icons[tabs.indexOf(e)],
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Text(e,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium),
-                                ],
-                              ),
-                            ),
-                          )
-                          .toList(),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 6,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            margin: const EdgeInsets.only(right: 10),
-                            width: 150,
-                            decoration: BoxDecoration(
-                              color: Colors.brown.shade300,
-                              borderRadius: BorderRadius.circular(
-                                  20), // half of the width or height
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  tabs[0],
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
-                                        color: Colors.white,
-                                      ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "Cappuccino is a coffee-based drink made primarily from espresso and milk.",
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall!
-                                      .copyWith(
-                                        color: Colors.white,
-                                      ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "\$ 4.99",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
-                                        color: Colors.white,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                  ],
-                ),
-              ),
+              const _Discover(),
+              _Categories(tabs: tabs, icons: icons),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+  const _CustomAppBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0.0,
+      leading: const Padding(
+        padding: EdgeInsets.all(10.0),
+        child: CircleAvatar(
+          radius: 20,
+          backgroundImage: NetworkImage(
+              "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmVyZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"),
+        ),
+      ),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 12.0),
+          child: IconButton(
+            onPressed: () {},
+            icon: FaIcon(
+              FontAwesomeIcons.bell,
+              color: Colors.grey.shade500,
+            ),
+          ),
+        ),
+      ],
+      title: const BarTitle(),
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(56.0);
+}
+
+class _Categories extends StatelessWidget {
+  const _Categories({
+    Key? key,
+    required this.tabs,
+    required this.icons,
+  }) : super(key: key);
+
+  final List<String> tabs;
+  final List<IconData> icons;
+
+  @override
+  Widget build(BuildContext context) {
+    final cappuccino = Cappuccino.cappuccinos;
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Categories",
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          CustomTabBar(tabs: tabs, icons: icons),
+          const SizedBox(
+            height: 20,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.45,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: cappuccino.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: const EdgeInsets.only(right: 10),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      color: Colors.brown.shade300,
+                      borderRadius: BorderRadius.circular(
+                          30), // half of the width or height
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            tabs[0],
+                            style:
+                                Theme.of(context).textTheme.titleMedium!.copyWith(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            cappuccino[index].description,
+                            style:
+                                Theme.of(context).textTheme.bodySmall!.copyWith(
+                                      color: Colors.white,
+                                    ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "\$ 4.99",
+                            style:
+                                Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                      color: Colors.white,
+                                    ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _Discover extends StatelessWidget {
+  const _Discover({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Good Morning, Tony",
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+              hintText: "Search Coffee",
+              hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: Colors.grey.shade500,
+                  ),
+              prefixIcon: const Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
+              suffixIcon: Container(
+                margin: const EdgeInsets.only(right: 5, bottom: 5, top: 5),
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Colors.brown.shade300,
+                  borderRadius:
+                      BorderRadius.circular(20), // half of the width or height
+                ),
+                child: const Icon(
+                  Icons.tune,
+                  color: Colors.white,
+                ),
+              ),
+              filled: true,
+              fillColor: Colors.grey.shade100,
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(25),
+                borderSide: BorderSide.none,
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(25),
+                borderSide: BorderSide.none,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
