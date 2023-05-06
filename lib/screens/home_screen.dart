@@ -120,11 +120,14 @@ class _Categories extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: cappuccino.length,
                 itemBuilder: (context, index) {
-                  return CoffeeCard(
-                      title: tabs[0],
-                      description: cappuccino[index].description,
-                      price: cappuccino[index].price,
-                      imageUrl: cappuccino[index].image);
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: CoffeeCard(
+                        title: tabs[0],
+                        description: cappuccino[index].description,
+                        price: cappuccino[index].price,
+                        imageUrl: cappuccino[index].image),
+                  );
                 },
               ),
               ListView.builder(

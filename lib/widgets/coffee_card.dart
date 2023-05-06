@@ -18,7 +18,6 @@ class CoffeeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
@@ -27,7 +26,7 @@ class CoffeeCard extends StatelessWidget {
             color: const Color.fromARGB(255, 234, 231, 231).withOpacity(0.5),
             spreadRadius: 1,
             blurRadius: 5,
-            offset: const Offset(0, 3),
+            offset: Offset.zero,
           ),
         ],
       ),
@@ -39,7 +38,7 @@ class CoffeeCard extends StatelessWidget {
           Expanded(
             // to build a budge
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5.0),
               child: ImageContainer(
                 height: MediaQuery.of(context).size.height * 0.37,
                 width: MediaQuery.of(context).size.width * 0.4,
@@ -48,7 +47,6 @@ class CoffeeCard extends StatelessWidget {
               ),
             ),
           ),
-        
           Padding(
             padding: const EdgeInsets.only(
               left: 12.0,
@@ -63,7 +61,6 @@ class CoffeeCard extends StatelessWidget {
                   ),
             ),
           ),
-         
           Padding(
             padding: const EdgeInsets.only(
               left: 12.0,
