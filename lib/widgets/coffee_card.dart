@@ -31,71 +31,64 @@ class CoffeeCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Container(
-        width: MediaQuery.of(context).size.width * 0.4,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius:
-              BorderRadius.circular(30), // half of the width or height
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                // to build a budge
-                child: ImageContainer(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  imageUrl: imageUrl,
-                  borderRadius: 30,
+      width: MediaQuery.of(context).size.width * 0.4,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              // to build a budge
+              child: ImageContainer(
+                width: MediaQuery.of(context).size.width * 0.4,
+                imageUrl: imageUrl,
+                borderRadius: 30,
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              title,
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              description,
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    color: Colors.black,
+                  ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  price,
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                title,
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                description,
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      color: Colors.black,
-                    ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    price,
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
+                Container(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    color: Colors.green.shade800,
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      color: Colors.green.shade800,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    ),
+                  child: const Icon(
+                    Icons.add,
+                    color: Colors.white,
                   ),
-                ],
-              ),
-            ],
-          ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
