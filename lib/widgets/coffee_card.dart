@@ -39,9 +39,9 @@ class CoffeeCard extends StatelessWidget {
           Expanded(
             // to build a budge
             child: Padding(
-              padding: const EdgeInsets.all(4.0),
+              padding: const EdgeInsets.all(8.0),
               child: ImageContainer(
-                height: MediaQuery.of(context).size.height * 0.4,
+                height: MediaQuery.of(context).size.height * 0.37,
                 width: MediaQuery.of(context).size.width * 0.4,
                 imageUrl: imageUrl,
                 borderRadius: 30,

@@ -114,7 +114,7 @@ class _Categories extends StatelessWidget {
             height: 20,
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.4,
+            height: MediaQuery.of(context).size.height * 0.37,
             child: TabBarView(children: [
               ListView.builder(
                 scrollDirection: Axis.horizontal,
