@@ -21,8 +21,7 @@ class MyApp extends StatelessWidget {
       ],
       title: 'Coffee Shop',
       theme: ThemeData(
-        // is not restarted.
-        fontFamily: 'Poppins',
+        // is not restarted
         primarySwatch: Colors.blue,
       ),
       home: const HomeScreen(),
