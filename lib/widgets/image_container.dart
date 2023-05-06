@@ -10,7 +10,7 @@ class ImageContainer extends StatelessWidget {
   final Widget? child;
   const ImageContainer({
     Key? key,
-    this.height = 0.0,
+    required this.height,
     required this.width,
     required this.imageUrl,
     this.padding,

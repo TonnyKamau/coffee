@@ -32,40 +32,58 @@ class CoffeeCard extends StatelessWidget {
         ],
       ),
       width: MediaQuery.of(context).size.width * 0.4,
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              // to build a budge
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            // to build a budge
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
               child: ImageContainer(
+                height: MediaQuery.of(context).size.height * 0.4,
                 width: MediaQuery.of(context).size.width * 0.4,
                 imageUrl: imageUrl,
                 borderRadius: 30,
               ),
             ),
-            const SizedBox(
-              height: 5,
+          ),
+        
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 12.0,
+              right: 12.0,
+              bottom: 8.0,
             ),
-            Text(
+            child: Text(
               title,
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
             ),
-            const SizedBox(
-              height: 5,
+          ),
+         
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 12.0,
+              right: 12.0,
+              bottom: 8.0,
             ),
-            Text(
+            child: Text(
               description,
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     color: Colors.black,
                   ),
             ),
-            Row(
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 12.0,
+              right: 12.0,
+              bottom: 8.0,
+            ),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
@@ -88,8 +106,8 @@ class CoffeeCard extends StatelessWidget {
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
