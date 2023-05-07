@@ -123,12 +123,12 @@ class _Categories extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.only(right: 10.0),
                     child: CoffeeCard(
-                        title: tabs[0],
-                        description: cappuccino[index].description,
-                        price: cappuccino[index].price,
-                        imageUrl: cappuccino[index].image,
-                        rating:cappuccino[index].rating,
-                        ),
+                      title: tabs[0],
+                      description: cappuccino[index].description,
+                      price: cappuccino[index].price,
+                      imageUrl: cappuccino[index].image,
+                      rating: cappuccino[index].rating,
+                    ),
                   );
                 },
               ),
@@ -136,22 +136,32 @@ class _Categories extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: latte.length,
                 itemBuilder: (context, index) {
-                  return CoffeeCard(
-                      title: tabs[1],
-                      description: latte[index].description,
-                      price: latte[index].price,
-                      imageUrl: latte[index].image);
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: CoffeeCard(
+                      title: tabs[0],
+                      description: cappuccino[index].description,
+                      price: cappuccino[index].price,
+                      imageUrl: cappuccino[index].image,
+                      rating: cappuccino[index].rating,
+                    ),
+                  );
                 },
               ),
               ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: espresso.length,
                 itemBuilder: (context, index) {
-                  return CoffeeCard(
-                      title: tabs[2],
-                      description: espresso[index].description,
-                      price: espresso[index].price,
-                      imageUrl: espresso[index].image);
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: CoffeeCard(
+                      title: tabs[0],
+                      description: cappuccino[index].description,
+                      price: cappuccino[index].price,
+                      imageUrl: cappuccino[index].image,
+                      rating: cappuccino[index].rating,
+                    ),
+                  );
                 },
               ),
             ]),
