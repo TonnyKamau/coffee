@@ -126,7 +126,9 @@ class _Categories extends StatelessWidget {
                         title: tabs[0],
                         description: cappuccino[index].description,
                         price: cappuccino[index].price,
-                        imageUrl: cappuccino[index].image),
+                        imageUrl: cappuccino[index].image,
+                        rating:cappuccino[index].rating,
+                        ),
                   );
                 },
               ),
