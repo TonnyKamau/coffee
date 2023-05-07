@@ -195,6 +195,7 @@ class _Discover extends StatelessWidget {
             height: 20,
           ),
           TextFormField(
+            cursorColor: Colors.black,
             decoration: InputDecoration(
               hintText: "Search Coffee",
               hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
