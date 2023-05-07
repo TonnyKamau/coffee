@@ -4,7 +4,7 @@ class ImageContainer extends StatelessWidget {
   final double height;
   final double width;
   final String imageUrl;
-
+  final String rating;
   final EdgeInsets? padding;
   final EdgeInsets? margin;
   final double? borderRadius;
@@ -15,6 +15,7 @@ class ImageContainer extends StatelessWidget {
     required this.height,
     required this.width,
     required this.imageUrl,
+    required this.rating,
     this.padding,
     this.margin,
     this.borderRadius,
@@ -53,18 +54,18 @@ class ImageContainer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Icon(
+              children: [
+                const Icon(
                   Icons.star,
                   size: 12,
                   color: Colors.white,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 2,
                 ),
                 Text(
-                  "4.5",
-                  style: TextStyle(
+                  rating,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 12,
                   ),

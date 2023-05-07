@@ -9,11 +9,13 @@ class CoffeeCard extends StatelessWidget {
     required this.description,
     required this.price,
     required this.imageUrl,
+    required this.rating,
   });
   final String title;
   final String description;
   final String price;
   final String imageUrl;
+  final String rating;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +46,7 @@ class CoffeeCard extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.4,
                 imageUrl: imageUrl,
                 borderRadius: 30,
+                rating:rating,
               ),
             ),
           ),
