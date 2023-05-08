@@ -123,9 +123,8 @@ class _Categories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cappuccino = Cappuccino.cappuccinos;
-    final latte = Latte.lattes;
-    final espresso = Espresso.espressos;
+    final coffee = Coffee.coffees;
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -141,77 +140,73 @@ class _Categories extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          CustomTabBar(tabs: tabs, icons: icons),
+          Material(
+            color: Colors.transparent,
+            child: TabBar(
+              splashFactory: NoSplash.splashFactory,
+              isScrollable: true,
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicator: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.green.shade800,
+              ),
+              unselectedLabelColor: Colors.black,
+              labelColor: Colors.white,
+              tabs: tabs
+                  .map(
+                    (e) => Tab(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            icons[tabs.indexOf(e)],
+                          ),
+                          const SizedBox(width: 10),
+                          Text(e,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
           const SizedBox(
             height: 20,
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.37,
-            child: TabBarView(children: [
-              ListView.builder(
+            child: TabBarView(
+                children: tabs.map((e) {
+              return ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: cappuccino.length,
+                itemCount: coffee.length,
                 itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 10.0),
-                    child: InkWell(
-                      onTap: () {
-                        Get.toNamed('/coffee', arguments: cappuccino[index]);
-                      },
-                      child: CoffeeCard(
-                        title: tabs[0],
-                        description: cappuccino[index].description,
-                        price: cappuccino[index].price,
-                        imageUrl: cappuccino[index].image,
-                        rating: cappuccino[index].rating,
+                  if (coffee[index].type == e) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: InkWell(
+                        onTap: () {
+                          Get.toNamed('/coffee', arguments: coffee[index]);
+                        },
+                        child: CoffeeCard(
+                          title: coffee[index].type,
+                          description: coffee[index].description,
+                          price: coffee[index].price,
+                          imageUrl: coffee[index].image,
+                          rating: coffee[index].rating,
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  } else {
+                    return const SizedBox.shrink();
+                  }
                 },
-              ),
-              ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: latte.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 10.0),
-                    child: InkWell(
-                      onTap: () {
-                        Get.toNamed('/coffee', arguments: latte[index]);
-                      },
-                      child: CoffeeCard(
-                        title: tabs[1],
-                        description: latte[index].description,
-                        price: latte[index].price,
-                        imageUrl: latte[index].image,
-                        rating: latte[index].rating,
-                      ),
-                    ),
-                  );
-                },
-              ),
-              ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: espresso.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 10.0),
-                    child: InkWell(
-                      onTap: () {
-                        Get.toNamed('/coffee', arguments: espresso[index]);
-                      },
-                      child: CoffeeCard(
-                        title: tabs[2],
-                        description: espresso[index].description,
-                        price: espresso[index].price,
-                        imageUrl: espresso[index].image,
-                        rating: espresso[index].rating,
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ]),
+              );
+            }).toList()),
           ),
         ],
       ),
@@ -259,7 +254,7 @@ class _Discover extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(177, 114, 53, 31),
                   borderRadius:
-                      BorderRadius.circular(20), // half of the width or height
+                      BorderRadius.circular(50), // half of the width or height
                 ),
                 child: const Icon(
                   Icons.tune,

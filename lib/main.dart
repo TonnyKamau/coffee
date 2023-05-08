@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Coffee Shop',
       theme: ThemeData(
         // is not restarted
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.brown,
       ),
       home: const HomeScreen(),
     );
