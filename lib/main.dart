@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => const HomeScreen()),
+        GetPage(name: '/coffee', page: () => const CoffeeScreen()),
       ],
       title: 'Coffee Shop',
       theme: ThemeData(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 import '../models/model.dart';
 import '../widgets/widget.dart';
@@ -33,12 +34,23 @@ class HomeScreen extends StatelessWidget {
             _Categories(tabs: tabs, icons: icons),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'Special offer',
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
+              child: Row(
+                children: [
+                  Text(
+                    'Special offer',
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const FaIcon(
+                    FontAwesomeIcons.fire,
+                    color: Colors.red,
+                  )
+                ],
               ),
             ),
             ListView.builder(
@@ -142,12 +154,17 @@ class _Categories extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(right: 10.0),
-                    child: CoffeeCard(
-                      title: tabs[0],
-                      description: cappuccino[index].description,
-                      price: cappuccino[index].price,
-                      imageUrl: cappuccino[index].image,
-                      rating: cappuccino[index].rating,
+                    child: InkWell(
+                      onTap: () {
+                        Get.toNamed('/coffee', arguments: cappuccino[index]);
+                      },
+                      child: CoffeeCard(
+                        title: tabs[0],
+                        description: cappuccino[index].description,
+                        price: cappuccino[index].price,
+                        imageUrl: cappuccino[index].image,
+                        rating: cappuccino[index].rating,
+                      ),
                     ),
                   );
                 },
@@ -158,12 +175,17 @@ class _Categories extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(right: 10.0),
-                    child: CoffeeCard(
-                      title: tabs[1],
-                      description: latte[index].description,
-                      price: latte[index].price,
-                      imageUrl: latte[index].image,
-                      rating: latte[index].rating,
+                    child: InkWell(
+                      onTap: () {
+                        Get.toNamed('/coffee', arguments: latte[index]);
+                      },
+                      child: CoffeeCard(
+                        title: tabs[1],
+                        description: latte[index].description,
+                        price: latte[index].price,
+                        imageUrl: latte[index].image,
+                        rating: latte[index].rating,
+                      ),
                     ),
                   );
                 },
@@ -174,12 +196,17 @@ class _Categories extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(right: 10.0),
-                    child: CoffeeCard(
-                      title: tabs[2],
-                      description: espresso[index].description,
-                      price: espresso[index].price,
-                      imageUrl: espresso[index].image,
-                      rating: espresso[index].rating,
+                    child: InkWell(
+                      onTap: () {
+                        Get.toNamed('/coffee', arguments: espresso[index]);
+                      },
+                      child: CoffeeCard(
+                        title: tabs[2],
+                        description: espresso[index].description,
+                        price: espresso[index].price,
+                        imageUrl: espresso[index].image,
+                        rating: espresso[index].rating,
+                      ),
                     ),
                   );
                 },
