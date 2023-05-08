@@ -21,21 +21,41 @@ class HomeScreen extends StatelessWidget {
       Icons.coffee_rounded,
       Icons.coffee_maker,
     ];
-
+    final promotions = Promotion.promotions;
     return DefaultTabController(
       initialIndex: 0,
       length: tabs.length,
       child: Scaffold(
         appBar: const _CustomAppBar(),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              const _Discover(),
-              _Categories(tabs: tabs, icons: icons),
-            ],
-          ),
+        body: ListView(
+          children: [
+            const _Discover(),
+            _Categories(tabs: tabs, icons: icons),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'Special offer',
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: promotions.length,
+              itemBuilder: (context, index) {
+                return PromotionCard(
+                  category: promotions[index].categories,
+                  description: promotions[index].description,
+                  image: promotions[index].imageUrl,
+                );
+              },
+            ),
+          ],
         ),
-        bottomNavigationBar: _CustomBottomNavigationBar(),
+        bottomNavigationBar: const _CustomBottomNavigationBar(),
       ),
     );
   }
@@ -139,11 +159,11 @@ class _Categories extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.only(right: 10.0),
                     child: CoffeeCard(
-                      title: tabs[0],
-                      description: cappuccino[index].description,
-                      price: cappuccino[index].price,
-                      imageUrl: cappuccino[index].image,
-                      rating: cappuccino[index].rating,
+                      title: tabs[1],
+                      description: latte[index].description,
+                      price: latte[index].price,
+                      imageUrl: latte[index].image,
+                      rating: latte[index].rating,
                     ),
                   );
                 },
@@ -155,11 +175,11 @@ class _Categories extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.only(right: 10.0),
                     child: CoffeeCard(
-                      title: tabs[0],
-                      description: cappuccino[index].description,
-                      price: cappuccino[index].price,
-                      imageUrl: cappuccino[index].image,
-                      rating: cappuccino[index].rating,
+                      title: tabs[2],
+                      description: espresso[index].description,
+                      price: espresso[index].price,
+                      imageUrl: espresso[index].image,
+                      rating: espresso[index].rating,
                     ),
                   );
                 },
