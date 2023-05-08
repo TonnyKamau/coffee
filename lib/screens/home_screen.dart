@@ -240,7 +240,7 @@ class _Discover extends StatelessWidget {
                 ),
               ),
               filled: true,
-              fillColor: Colors.grey.shade100,
+              fillColor: Colors.grey.shade200,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25),
                 borderSide: BorderSide.none,
