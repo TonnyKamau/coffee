@@ -230,7 +230,7 @@ class _Discover extends StatelessWidget {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 161, 72, 39),
+                  color: const Color.fromARGB(177, 114, 53, 31),
                   borderRadius:
                       BorderRadius.circular(20), // half of the width or height
                 ),
