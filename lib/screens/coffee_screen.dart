@@ -93,13 +93,13 @@ class _CoffeeBodyState extends State<_CoffeeBody> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 16),
-              padding: const EdgeInsets.all(8.0),
-              height: 50,
+              margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5),
+              padding: const EdgeInsets.all(5.0),
+              height: MediaQuery.of(context).size.height * 0.09,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(30),
               ),
               child: Center(
                 child: ListView.builder(
@@ -123,8 +123,7 @@ class _CoffeeBodyState extends State<_CoffeeBody> {
               height: 20,
             ),
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
               child: Text(
                 'Coffee Size',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -139,7 +138,7 @@ class _CoffeeBodyState extends State<_CoffeeBody> {
             Material(
               color: Colors.transparent,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: TabBar(
                   splashFactory: NoSplash.splashFactory,
                   isScrollable: true,
@@ -165,7 +164,7 @@ class _CoffeeBodyState extends State<_CoffeeBody> {
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
               child: Text(
                 'About',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -178,7 +177,7 @@ class _CoffeeBodyState extends State<_CoffeeBody> {
               height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
               child: GestureDetector(
                 onTap: () {
                   setState(() {
@@ -187,10 +186,11 @@ class _CoffeeBodyState extends State<_CoffeeBody> {
                 },
                 child: Text(
                   widget.coffee.about,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: Colors.black,
-                        height: 1.5,
-                      ),
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    height: 1.5,
+                  ),
                   maxLines: _showOverflow ? null : 3,
                   overflow: _showOverflow ? null : TextOverflow.ellipsis,
                   textAlign: TextAlign.left,
@@ -198,20 +198,17 @@ class _CoffeeBodyState extends State<_CoffeeBody> {
               ),
             ),
             if (!_showOverflow)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: TextButton(
-                  onPressed: () {
-                    setState(() {
-                      _showOverflow = true;
-                    });
-                  },
-                  child: Text(
-                    'Read More',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Colors.green.shade800,
-                        ),
-                  ),
+              TextButton(
+                onPressed: () {
+                  setState(() {
+                    _showOverflow = true;
+                  });
+                },
+                child: Text(
+                  'Read More',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: Colors.green.shade800,
+                      ),
                 ),
               ),
             const SizedBox(
@@ -227,38 +224,37 @@ class _CoffeeBodyState extends State<_CoffeeBody> {
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                     
                       Text(
                         'Add to Cart',
-                        style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                       ),
-                     
                       Container(
-                      width: 2,
-                      height: 20,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20))
-                      ),
+                          width: 2,
+                          height: 20,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20))),
                       Text(
                         widget.coffee.price,
-                        style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                       ),
                     ],
                   ),
                 ),
-                
-              ) ,
+              ),
             ),
           ],
         ),
@@ -280,7 +276,7 @@ class _TasteProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
       child: SizedBox(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -295,9 +291,10 @@ class _TasteProfile extends StatelessWidget {
             ),
             Text(
               title,
-              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                    color: Colors.black,
-                  ),
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 12,
+              ),
             ),
             const SizedBox(
               width: 5,
