@@ -249,12 +249,11 @@ class _Discover extends StatelessWidget {
               ),
               suffixIcon: Container(
                 margin: const EdgeInsets.only(right: 5, bottom: 5, top: 5),
-                width: 40,
-                height: 40,
+                padding: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(177, 114, 53, 31),
                   borderRadius:
-                      BorderRadius.circular(50), // half of the width or height
+                      BorderRadius.circular(20), // half of the width or height
                 ),
                 child: const Icon(
                   Icons.tune,
