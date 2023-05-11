@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 class Coffee extends Equatable {
   final String image;
   final String description;
@@ -8,6 +10,7 @@ class Coffee extends Equatable {
   final List moreDescription;
   final String about;
   final String type;
+  final List<FaIcon> moreIcons;
   Coffee({
     required this.image,
     required this.description,
@@ -16,6 +19,7 @@ class Coffee extends Equatable {
     required this.moreDescription,
     required this.about,
     required this.type,
+    required this.moreIcons,
   });
   static List<Coffee> coffees = [
     Coffee(
@@ -26,8 +30,13 @@ class Coffee extends Equatable {
       price: "\$4.99",
       rating: "4.5",
       moreDescription: const ["coffee", "chocolate", "medium roasted"],
+      moreIcons: const [
+        FaIcon(FontAwesomeIcons.coffee),
+        FaIcon(FontAwesomeIcons.droplet),
+        FaIcon(FontAwesomeIcons.fireFlameSimple),
+      ],
       about:
-          " Espresso is a coffee-based drink made primarily from espresso and milk, and it is a popular coffee drink that originated in Italy. The name comes from the Capuchin friars, referring to the colour of their habits, and in this context referring to the colour of the beverage when milk is added in small portion to dark, brewed coffee (today mostly espresso). The physical appearance of a modern cappuccino with espresso créma and steamed milk is a result of a long evolution of the drink. The Viennese bestowed the name 'Kapuziner' possibly in the 18th century on a version that included whipped cream and spices of unknown origin. The Italian cappuccino was unknown until the 1930s, and seems to be born out of Viennese-style cafés in Trieste and other cities in the former Austria in the first decades of the 20th century.",
+          "Espresso is a coffee-based drink made primarily from espresso and milk, and it is a popular coffee drink that originated in Italy. The name comes from the Capuchin friars, referring to the colour of their habits, and in this context referring to the colour of the beverage when milk is added in small portion to dark, brewed coffee (today mostly espresso). The physical appearance of a modern cappuccino with espresso créma and steamed milk is a result of a long evolution of the drink. The Viennese bestowed the name 'Kapuziner' possibly in the 18th century on a version that included whipped cream and spices of unknown origin. The Italian cappuccino was unknown until the 1930s, and seems to be born out of Viennese-style cafés in Trieste and other cities in the former Austria in the first decades of the 20th century.",
     ),
     Coffee(
       type: "Espresso",
@@ -37,8 +46,13 @@ class Coffee extends Equatable {
       price: "\$5.99",
       rating: "4.5",
       moreDescription: const ["coffee", "milk", "medium roasted"],
+      moreIcons: const [
+        FaIcon(FontAwesomeIcons.coffee),
+        FaIcon(FontAwesomeIcons.glassWater),
+        FaIcon(FontAwesomeIcons.fireFlameSimple),
+      ],
       about:
-          " Espresso is a coffee-based drink made primarily from espresso and milk, and it is a popular coffee drink that originated in Italy. The name comes from the Capuchin friars, referring to the colour of their habits, and in this context referring to the colour of the beverage when milk is added in small portion to dark, brewed coffee (today mostly espresso). The physical appearance of a modern cappuccino with espresso créma and steamed milk is a result of a long evolution of the drink. The Viennese bestowed the name 'Kapuziner' possibly in the 18th century on a version that included whipped cream and spices of unknown origin. The Italian cappuccino was unknown until the 1930s, and seems to be born out of Viennese-style cafés in Trieste and other cities in the former Austria in the first decades of the 20th century.",
+          "Espresso is a coffee-based drink made primarily from espresso and milk, and it is a popular coffee drink that originated in Italy. The name comes from the Capuchin friars, referring to the colour of their habits, and in this context referring to the colour of the beverage when milk is added in small portion to dark, brewed coffee (today mostly espresso). The physical appearance of a modern cappuccino with espresso créma and steamed milk is a result of a long evolution of the drink. The Viennese bestowed the name 'Kapuziner' possibly in the 18th century on a version that included whipped cream and spices of unknown origin. The Italian cappuccino was unknown until the 1930s, and seems to be born out of Viennese-style cafés in Trieste and other cities in the former Austria in the first decades of the 20th century.",
     ),
     Coffee(
         type: "Espresso",
@@ -48,6 +62,11 @@ class Coffee extends Equatable {
         price: "\$4.99",
         rating: "4.5",
         moreDescription: const ["coffee", "water", "add on cream"],
+        moreIcons: const [
+          FaIcon(FontAwesomeIcons.coffee),
+          FaIcon(FontAwesomeIcons.glassWaterDroplet),
+          FaIcon(FontAwesomeIcons.iceCream),
+        ],
         about:
             "Espresso is a coffee-based drink that originated in Italy, and is traditionally prepared with steamed milk foam (microfoam). It is normally prepared in a special type of coffee maker, the Espresso machine, which produces a thick, long-lasting foam. The drink is usually prepared with equal parts of espresso and hot milk, although the ratio of espresso to milk varies according to taste. The drink is typically garnished with cinnamon."),
     Coffee(
@@ -58,6 +77,11 @@ class Coffee extends Equatable {
       price: "\$4.32",
       rating: "4.7",
       moreDescription: const ["coffee", "chocolate", "medium grinded"],
+      moreIcons: const [
+        FaIcon(FontAwesomeIcons.coffee),
+        FaIcon(FontAwesomeIcons.lemon),
+        FaIcon(FontAwesomeIcons.leaf),
+      ],
       about:
           "Espresso is a coffee-based drink that originated in Italy, and is traditionally prepared with steamed milk foam (microfoam). It is normally prepared in a special type of coffee maker, the Espresso machine, which produces a thick, long-lasting foam. The drink is usually prepared with equal parts of espresso and hot milk, although the ratio of espresso to milk varies according to taste. The drink is typically garnished with cinnamon.",
     ),
@@ -69,6 +93,11 @@ class Coffee extends Equatable {
       price: "\$4.99",
       rating: "4.4",
       moreDescription: const ["coffee", "chocolate", "medium roasted"],
+      moreIcons: const [
+        FaIcon(FontAwesomeIcons.coffee),
+        FaIcon(FontAwesomeIcons.candyCane),
+        FaIcon(FontAwesomeIcons.fireFlameSimple),
+      ],
       about:
           "Cappuccino is a coffee-based drink that originated in Italy, and is traditionally prepared with steamed milk foam (microfoam). It is normally prepared in a special type of coffee maker, the cappuccino machine, which produces a thick, long-lasting foam. The drink is usually prepared with equal parts of espresso and hot milk, although the ratio of espresso to milk varies according to taste. The drink is typically garnished with cinnamon.",
     ),
@@ -80,6 +109,11 @@ class Coffee extends Equatable {
       price: "\$5.99",
       rating: "4.5",
       moreDescription: const ["coffee", "milk", "medium roasted"],
+      moreIcons: const [
+        FaIcon(FontAwesomeIcons.coffee),
+        FaIcon(FontAwesomeIcons.glassWater),
+        FaIcon(FontAwesomeIcons.fireFlameSimple),
+      ],
       about:
           "Cappuccino is a coffee-based drink that originated in Italy, and is traditionally prepared with steamed milk foam (microfoam). It is normally prepared in a special type of coffee maker, the cappuccino machine, which produces a thick, long-lasting foam. The drink is usually prepared with equal parts of espresso and hot milk, although the ratio of espresso to milk varies according to taste. The drink is typically garnished with cinnamon.",
     ),
@@ -91,6 +125,11 @@ class Coffee extends Equatable {
         price: "\$4.99",
         rating: "4.1",
         moreDescription: const ["coffee", "water", "add on cream"],
+        moreIcons: const [
+          FaIcon(FontAwesomeIcons.coffee),
+          FaIcon(FontAwesomeIcons.glassWaterDroplet),
+          FaIcon(FontAwesomeIcons.iceCream),
+        ],
         about:
             "Cappuccino is a coffee-based drink that originated in Italy, and is traditionally prepared with steamed milk foam (microfoam). It is normally prepared in a special type of coffee maker, the cappuccino machine, which produces a thick, long-lasting foam. The drink is usually prepared with equal parts of espresso and hot milk, although the ratio of espresso to milk varies according to taste. The drink is typically garnished with cinnamon."),
     Coffee(
@@ -101,6 +140,11 @@ class Coffee extends Equatable {
       price: "\$4.32",
       rating: "4.7",
       moreDescription: const ["coffee", "chocolate", "medium grinded"],
+      moreIcons: const [
+        FaIcon(FontAwesomeIcons.coffee),
+        FaIcon(FontAwesomeIcons.candyCane),
+        FaIcon(FontAwesomeIcons.leaf),
+      ],
       about:
           "Cappuccino is a coffee-based drink that originated in Italy, and is traditionally prepared with steamed milk foam (microfoam). It is normally prepared in a special type of coffee maker, the cappuccino machine, which produces a thick, long-lasting foam. The drink is usually prepared with equal parts of espresso and hot milk, although the ratio of espresso to milk varies according to taste. The drink is typically garnished with cinnamon.",
     ),
@@ -112,6 +156,11 @@ class Coffee extends Equatable {
       price: "\$4.99",
       rating: "4.5",
       moreDescription: const ["coffee", "chocolate", "medium roasted"],
+      moreIcons: const [
+        FaIcon(FontAwesomeIcons.coffee),
+        FaIcon(FontAwesomeIcons.candyCane),
+        FaIcon(FontAwesomeIcons.fireFlameSimple),
+      ],
       about:
           " Latte is a coffee-based drink made primarily from espresso and milk, and it is a popular coffee drink that originated in Italy. The name comes from the Capuchin friars, referring to the colour of their habits, and in this context referring to the colour of the beverage when milk is added in small portion to dark, brewed coffee (today mostly espresso). The physical appearance of a modern cappuccino with espresso créma and steamed milk is a result of a long evolution of the drink. The Viennese bestowed the name 'Kapuziner' possibly in the 18th century on a version that included whipped cream and spices of unknown origin. The Italian cappuccino was unknown until the 1930s, and seems to be born out of Viennese-style cafés in Trieste and other cities in the former Austria in the first decades of the 20th century.",
     ),
@@ -123,6 +172,11 @@ class Coffee extends Equatable {
       price: "\$5.99",
       rating: "4.5",
       moreDescription: const ["coffee", "milk", "medium roasted"],
+      moreIcons: const [
+        FaIcon(FontAwesomeIcons.coffee),
+        FaIcon(FontAwesomeIcons.glassWater),
+        FaIcon(FontAwesomeIcons.fireFlameSimple),
+      ],
       about:
           " Latte is a coffee-based drink made primarily from espresso and milk, and it is a popular coffee drink that originated in Italy. The name comes from the Capuchin friars, referring to the colour of their habits, and in this context referring to the colour of the beverage when milk is added in small portion to dark, brewed coffee (today mostly espresso). The physical appearance of a modern cappuccino with espresso créma and steamed milk is a result of a long evolution of the drink. The Viennese bestowed the name 'Kapuziner' possibly in the 18th century on a version that included whipped cream and spices of unknown origin. The Italian cappuccino was unknown until the 1930s, and seems to be born out of Viennese-style cafés in Trieste and other cities in the former Austria in the first decades of the 20th century.",
     ),
@@ -134,6 +188,11 @@ class Coffee extends Equatable {
       price: "\$4.99",
       rating: "4.5",
       moreDescription: const ["coffee", "water", "add on cream"],
+      moreIcons: const [
+        FaIcon(FontAwesomeIcons.coffee),
+        FaIcon(FontAwesomeIcons.glassWaterDroplet),
+        FaIcon(FontAwesomeIcons.iceCream),
+      ],
       about:
           " Latte is a coffee-based drink made primarily from espresso and milk, and it is a popular coffee drink that originated in Italy. The name comes from the Capuchin friars, referring to the colour of their habits, and in this context referring to the colour of the beverage when milk is added in small portion to dark, brewed coffee (today mostly espresso). The physical appearance of a modern cappuccino with espresso créma and steamed milk is a result of a long evolution of the drink. The Viennese bestowed the name 'Kapuziner' possibly in the 18th century on a version that included whipped cream and spices of unknown origin. The Italian cappuccino was unknown until the 1930s, and seems to be born out of Viennese-style cafés in Trieste and other cities in the former Austria in the first decades of the 20th century.",
     ),
@@ -145,6 +204,11 @@ class Coffee extends Equatable {
       price: "\$4.32",
       rating: "4.7",
       moreDescription: const ["coffee", "lemon", "less sugar"],
+      moreIcons: const [
+        FaIcon(FontAwesomeIcons.coffee),
+        FaIcon(FontAwesomeIcons.lemon),
+        FaIcon(FontAwesomeIcons.leaf),
+      ],
       about:
           " Latte is a coffee-based drink made primarily from espresso and milk, and it is a popular coffee drink that originated in Italy. The name comes from the Capuchin friars, referring to the colour of their habits, and in this context referring to the colour of the beverage when milk is added in small portion to dark, brewed coffee (today mostly espresso). The physical appearance of a modern cappuccino with espresso créma and steamed milk is a result of a long evolution of the drink. The Viennese bestowed the name 'Kapuziner' possibly in the 18th century on a version that included whipped cream and spices of unknown origin. The Italian cappuccino was unknown until the 1930s, and seems to be born out of Viennese-style cafés in Trieste and other cities in the former Austria in the first decades of the 20th century.",
     ),
