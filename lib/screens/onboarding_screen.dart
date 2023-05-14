@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import 'screen.dart';
+
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -97,11 +99,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      backgroundColor: Colors.green
-                          .shade800, // Set the button's background color
+                      backgroundColor: Colors
+                          .green.shade800, // Set the button's background color
                     ),
+                    // onPressed: () {
+                    //   Future.delayed(Duration(milliseconds: 100), () {
+                    //     Get.toNamed('/home');
+                    //   });
+                    // },
                     onPressed: () {
-                      Get.toNamed('/home');
+                      Future.delayed(const Duration(milliseconds: 100), () {
+                        Navigator.of(context).push(
+                          PageRouteBuilder(
+                            transitionDuration:
+                                const Duration(milliseconds: 500),
+                            pageBuilder: (_, __, ___) => const HomeScreen(),
+                            transitionsBuilder: (_, animation, __, child) {
+                              return FadeTransition(
+                                opacity: animation,
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
+                      });
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -111,13 +132,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       child: Center(
                         child: Text(
                           'Get Started',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium!
-                              .copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                         ),
                       ),
                     ),
