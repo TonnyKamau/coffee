@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => const HomeScreen()),
+        GetPage(name: '/', page: () => const OnboardingScreen()),
+        GetPage(name: '/home', page: () => const HomeScreen()),
         GetPage(name: '/coffee', page: () => const CoffeeScreen()),
       ],
       title: 'Coffee Shop',
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted
         primarySwatch: Colors.brown,
       ),
-      home: const HomeScreen(),
+      home: const OnboardingScreen(),
     );
   }
 }
