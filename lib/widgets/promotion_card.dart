@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'widget.dart';
-
 class PromotionCard extends StatelessWidget {
   const PromotionCard({
     Key? key,
