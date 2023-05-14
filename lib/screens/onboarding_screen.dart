@@ -80,29 +80,44 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ],
                 ),
               ),
-              InkWell(
-                onTap: () => Get.toNamed('/home'),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(bottom: 20.0, left: 20, right: 20),
-                  child: Container(
-                    height: 70,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: Colors.green.shade800,
-                      borderRadius: BorderRadius.circular(50),
+              Padding(
+                padding:
+                    const EdgeInsets.only(bottom: 20.0, left: 20, right: 20),
+                child: Container(
+                  height: 70,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: Colors.green.shade800,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation:
+                          4, // Set the elevation to match the container's elevation
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      backgroundColor: Colors.green
+                          .shade800, // Set the button's background color
                     ),
+                    onPressed: () {
+                      Get.toNamed('/home');
+                    },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 10),
+                        horizontal: 20.0,
+                        vertical: 10,
+                      ),
                       child: Center(
                         child: Text(
                           'Get Started',
-                          style:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                       ),
                     ),
