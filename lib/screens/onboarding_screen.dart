@@ -102,23 +102,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       backgroundColor: Colors
                           .green.shade800, // Set the button's background color
                     ),
-                  
                     onPressed: () {
-                      Future.delayed(const Duration(milliseconds: 100), () {
-                        Navigator.of(context).push(
-                          PageRouteBuilder(
-                            transitionDuration:
-                                const Duration(milliseconds: 500),
-                            pageBuilder: (_, __, ___) => const HomeScreen(),
-                            transitionsBuilder: (_, animation, __, child) {
-                              return FadeTransition(
-                                opacity: animation,
-                                child: child,
-                              );
-                            },
-                          ),
-                        );
-                      });
+                      Navigator.of(context).push(
+                        PageRouteBuilder(
+                          transitionDuration: const Duration(milliseconds: 500),
+                          pageBuilder: (_, __, ___) => const HomeScreen(),
+                          transitionsBuilder: (_, animation, __, child) {
+                            return FadeTransition(
+                              opacity: animation,
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
