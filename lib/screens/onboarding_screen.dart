@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import 'screen.dart';
+
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -80,21 +82,49 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ],
                 ),
               ),
-              InkWell(
-                onTap: () => Get.toNamed('/home'),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(bottom: 20.0, left: 20, right: 20),
-                  child: Container(
-                    height: 70,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: Colors.green.shade800,
-                      borderRadius: BorderRadius.circular(50),
+              Padding(
+                padding:
+                    const EdgeInsets.only(bottom: 20.0, left: 20, right: 20),
+                child: Container(
+                  height: 70,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: Colors.green.shade800,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation:
+                          4, // Set the elevation to match the container's elevation
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      backgroundColor: Colors
+                          .green.shade800, // Set the button's background color
                     ),
+                  
+                    onPressed: () {
+                      Future.delayed(const Duration(milliseconds: 100), () {
+                        Navigator.of(context).push(
+                          PageRouteBuilder(
+                            transitionDuration:
+                                const Duration(milliseconds: 500),
+                            pageBuilder: (_, __, ___) => const HomeScreen(),
+                            transitionsBuilder: (_, animation, __, child) {
+                              return FadeTransition(
+                                opacity: animation,
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
+                      });
+                    },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 10),
+                        horizontal: 20.0,
+                        vertical: 10,
+                      ),
                       child: Center(
                         child: Text(
                           'Get Started',
