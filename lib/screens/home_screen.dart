@@ -27,7 +27,31 @@ class HomeScreen extends StatelessWidget {
       initialIndex: 0,
       length: tabs.length,
       child: Scaffold(
-        appBar: const _CustomAppBar(),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          leading: const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: CircleAvatar(
+              radius: 20,
+              backgroundImage: NetworkImage(
+                  "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmVyZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"),
+            ),
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 12.0),
+              child: IconButton(
+                onPressed: () {},
+                icon: FaIcon(
+                  FontAwesomeIcons.bell,
+                  color: Colors.grey.shade500,
+                ),
+              ),
+            ),
+          ],
+          title: const BarTitle(),
+        ),
         body: ListView(
           children: [
             const _Discover(),
@@ -71,44 +95,6 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
-  const _CustomAppBar({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0.0,
-      leading: const Padding(
-        padding: EdgeInsets.all(10.0),
-        child: CircleAvatar(
-          radius: 20,
-          backgroundImage: NetworkImage(
-              "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmVyZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"),
-        ),
-      ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 12.0),
-          child: IconButton(
-            onPressed: () {},
-            icon: FaIcon(
-              FontAwesomeIcons.bell,
-              color: Colors.grey.shade500,
-            ),
-          ),
-        ),
-      ],
-      title: const BarTitle(),
-    );
-  }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(56.0);
 }
 
 class _Categories extends StatelessWidget {
