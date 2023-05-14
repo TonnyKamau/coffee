@@ -22,13 +22,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       },
       {
         'title': 'Our coffee is made with love and passion',
-        'description':
-            'We are a team of dedicated people who love what we do',
+        'description': 'We are a team of dedicated people who love what we do',
       },
       {
         'title': 'Order your coffee and get it delivered to your door',
-        'description':
-            'The more you order, the more you save on delivery',
+        'description': 'The more you order, the more you save on delivery',
       },
     ];
     return Container(
@@ -54,61 +52,63 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             children: [
               Expanded(
                 child: Stack(
-                children: [PageView.builder(
-                    itemCount: onBoardingData.length,
-                    controller: controller,
-                    itemBuilder: (context, index) {
-                      return  _MoreBoard(
-                        title: onBoardingData[index]['title'],
-                        description:
-                            onBoardingData[index]['description'],
-                      );
-                    },
-                  ),
-                  Container(
-                    alignment: const Alignment(0, 0.8),
-                    child: SmoothPageIndicator(
+                  children: [
+                    PageView.builder(
+                      itemCount: onBoardingData.length,
                       controller: controller,
-                      count: onBoardingData.length,
-                      effect: ExpandingDotsEffect(
-                        activeDotColor: Colors.green.shade800,
-                        dotColor: Colors.grey.shade600,
-                        dotHeight: 8,
-                        dotWidth: 8,
-                        spacing: 5,
+                      itemBuilder: (context, index) {
+                        return _MoreBoard(
+                          title: onBoardingData[index]['title'],
+                          description: onBoardingData[index]['description'],
+                        );
+                      },
+                    ),
+                    Container(
+                      alignment: const Alignment(0, 0.8),
+                      child: SmoothPageIndicator(
+                        controller: controller,
+                        count: onBoardingData.length,
+                        effect: ExpandingDotsEffect(
+                          activeDotColor: Colors.green.shade800,
+                          dotColor: Colors.grey.shade600,
+                          dotHeight: 8,
+                          dotWidth: 8,
+                          spacing: 5,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              InkWell(
+                onTap: () => Get.toNamed('/home'),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(bottom: 20.0, left: 20, right: 20),
+                  child: Container(
+                    height: 70,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      color: Colors.green.shade800,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 10),
+                      child: Center(
+                        child: Text(
+                          'Get Started',
+                          style:
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
                       ),
                     ),
                   ),
-                ],
                 ),
               ),
-               InkWell(
-                  onTap: () => Get.toNamed('/home'),
-                 child: Padding(
-                             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
-                             child: Container(
-                  height: 70,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    color: Colors.green.shade800,
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-                    child:  Center(
-                      child: Text(
-                            'Get Started',
-                            style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                    ),
-                  ),
-                  
-                             ) ,
-                           ),
-               ),
             ],
           ),
         ),
@@ -131,25 +131,29 @@ class _MoreBoard extends StatelessWidget {
     return Column(
       children: [
         SizedBox(height: MediaQuery.of(context).size.height * 0.45),
-        
-        Text(title,
-        maxLines: 3,
-        
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40.0),
+          child: Text(title,
+              maxLines: 3,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                    height: 1.5,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  )),
+        ),
+        const SizedBox(height: 5),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35.0),
+          child: Text(
+            description,
+            maxLines: 2,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-              wordSpacing: 1.5,
-              height: 1.5 ,
-                  fontWeight: FontWeight.w500,
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   color: Colors.white,
-                )),
-        const SizedBox(height: 10),
-        Text(
-          description,
-          maxLines: 2,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                color: Colors.white,
-              ),
+                  height: 1.5,
+                ),
+          ),
         ),
         const Spacer(),
       ],
