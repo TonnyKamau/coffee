@@ -102,11 +102,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       backgroundColor: Colors
                           .green.shade800, // Set the button's background color
                     ),
-                    // onPressed: () {
-                    //   Future.delayed(Duration(milliseconds: 100), () {
-                    //     Get.toNamed('/home');
-                    //   });
-                    // },
+                  
                     onPressed: () {
                       Future.delayed(const Duration(milliseconds: 100), () {
                         Navigator.of(context).push(
