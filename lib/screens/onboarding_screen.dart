@@ -16,25 +16,11 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   PageController controller = PageController();
   int currentIndex = 0;
-  List<String> images = [
-    'https://images.unsplash.com/photo-1564149504817-d1378368526f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQ0fHxjb2ZmZWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-    'https://images.unsplash.com/photo-1612509590595-785e974ed690?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTIzfHxjb2ZmZWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-    'https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-  ];
 
   @override
   void initState() {
     super.initState();
-    startImageTimer();
     startAutoScroll();
-  }
-
-  void startImageTimer() {
-    Timer.periodic(const Duration(seconds: 15), (Timer timer) {
-      setState(() {
-        currentIndex = (currentIndex + 1) % images.length;
-      });
-    });
   }
 
   int currentPageIndex = 0;
@@ -78,12 +64,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage(images[currentIndex]),
+          image: NetworkImage(
+              'https://images.unsplash.com/photo-1564149504817-d1378368526f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQ0fHxjb2ZmZWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'),
           fit: BoxFit.cover,
         ),
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
