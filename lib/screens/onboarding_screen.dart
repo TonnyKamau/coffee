@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -13,31 +15,75 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   PageController controller = PageController();
+  int currentIndex = 0;
+  List<String> images = [
+    'https://images.unsplash.com/photo-1564149504817-d1378368526f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQ0fHxjb2ZmZWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1612509590595-785e974ed690?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTIzfHxjb2ZmZWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    startImageTimer();
+    startAutoScroll();
+  }
+
+  void startImageTimer() {
+    Timer.periodic(const Duration(seconds: 15), (Timer timer) {
+      setState(() {
+        currentIndex = (currentIndex + 1) % images.length;
+      });
+    });
+  }
+
+  int currentPageIndex = 0;
+  List onBoardingData = [
+    {
+      'title': 'Coffee so good your taste buds will love it',
+      'description':
+          'The best grain, the finest roast, the most powerful flavor',
+    },
+    {
+      'title': 'Our coffee is made with love and passion',
+      'description': 'We are a team of dedicated people who love what we do',
+    },
+    {
+      'title': 'Order your coffee and get it delivered to your door',
+      'description': 'The more you order, the more you save on delivery',
+    },
+  ];
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  void startAutoScroll() {
+    Timer.periodic(const Duration(seconds: 5), (Timer timer) {
+      if (currentPageIndex < onBoardingData.length - 1) {
+        currentPageIndex++;
+      } else {
+        currentPageIndex = 0;
+      }
+      controller.animateToPage(
+        currentPageIndex,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    List onBoardingData = [
-      {
-        'title': 'Coffee so good your taste buds will love it',
-        'description':
-            'The best grain, the finest roast, the most powerful flavor',
-      },
-      {
-        'title': 'Our coffee is made with love and passion',
-        'description': 'We are a team of dedicated people who love what we do',
-      },
-      {
-        'title': 'Order your coffee and get it delivered to your door',
-        'description': 'The more you order, the more you save on delivery',
-      },
-    ];
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage(
-              'https://images.unsplash.com/photo-1564149504817-d1378368526f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQ0fHxjb2ZmZWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'),
+          image: NetworkImage(images[currentIndex]),
           fit: BoxFit.cover,
         ),
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
@@ -62,6 +108,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           title: onBoardingData[index]['title'],
                           description: onBoardingData[index]['description'],
                         );
+                      },
+                      onPageChanged: (int index) {
+                        setState(() {
+                          currentPageIndex = index;
+                        });
                       },
                     ),
                     Container(
