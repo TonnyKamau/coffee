@@ -1,10 +1,9 @@
 import 'dart:async';
 
+import 'package:coffee/screens/navigation_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import 'screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -143,7 +142,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Navigator.of(context).push(
                         PageRouteBuilder(
                           transitionDuration: const Duration(milliseconds: 500),
-                          pageBuilder: (_, __, ___) => const HomeScreen(),
+                          pageBuilder: (_, __, ___) => const NavigationScreen(),
                           transitionsBuilder: (_, animation, __, child) {
                             return FadeTransition(
                               opacity: animation,
