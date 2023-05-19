@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'screen.dart';
@@ -11,7 +10,11 @@ class NavigationScreen extends StatefulWidget {
   State<NavigationScreen> createState() => _NavigationScreenState();
 }
 
-class _NavigationScreenState extends State<NavigationScreen> {
+class _NavigationScreenState extends State<NavigationScreen>
+    with TickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+
   int _currentIndex = 0;
 
   void _navigatorBottomBar(int index) {
@@ -28,15 +31,44 @@ class _NavigationScreenState extends State<NavigationScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+    _animation = Tween<double>(begin: 0, end: 1).animate(_animationController);
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _children,
+      body: AnimatedBuilder(
+        animation: _animation,
+        builder: (BuildContext context, Widget? child) {
+          return IndexedStack(
+            index: _currentIndex,
+            children: _children,
+          );
+        },
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        onTap: _navigatorBottomBar,
+        onTap: (index) {
+          if (_currentIndex != index) {
+            _animationController.reverse(from: 1);
+            setState(() {
+              _currentIndex = index;
+            });
+            _animationController.forward();
+          }
+        },
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: true,
         showUnselectedLabels: true,
