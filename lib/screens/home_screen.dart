@@ -91,7 +91,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: const _CustomBottomNavigationBar(),
       ),
     );
   }
@@ -260,42 +259,6 @@ class _Discover extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class _CustomBottomNavigationBar extends StatelessWidget {
-  const _CustomBottomNavigationBar({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      showSelectedLabels: true,
-      showUnselectedLabels: true,
-      selectedItemColor: Colors.green.shade800,
-      unselectedItemColor: Colors.grey.shade500,
-      items: const [
-        BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.house),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.heart),
-          label: 'Favorite',
-        ),
-        BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.cartShopping),
-          label: 'Cart',
-        ),
-        BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.user),
-          label: 'Profile',
-        ),
-      ],
-      currentIndex: 0,
     );
   }
 }
