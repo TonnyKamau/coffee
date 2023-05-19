@@ -107,9 +107,9 @@ class _PromotionImage extends StatelessWidget {
     required this.height,
     required this.width,
     required this.imageUrl,
+    this.borderRadius,
     this.padding,
     this.margin,
-    this.borderRadius,
     this.child,
   }) : super(key: key);
 
