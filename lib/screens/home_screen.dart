@@ -129,8 +129,8 @@ class _Categories extends StatelessWidget {
             color: Colors.transparent,
             child: TabBar(
               splashFactory: NoSplash.splashFactory,
-              isScrollable: true,
               indicatorSize: TabBarIndicatorSize.tab,
+             indicatorColor: Colors.transparent,
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: Colors.green.shade800,
@@ -141,17 +141,26 @@ class _Categories extends StatelessWidget {
                   .map(
                     (e) => Tab(
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment
+                            .start, // Adjust MainAxisAlignment
                         children: [
                           Icon(
                             icons[tabs.indexOf(e)],
                           ),
-                          const SizedBox(width: 10),
-                          Text(e,
+                          const SizedBox(
+                            width: 1,
+                          ),
+                          Expanded(
+                            child: Text(
+                              e,
+                              overflow:
+                                  TextOverflow.ellipsis, // Handle overflow
                               style: Theme.of(context)
                                   .textTheme
-                                  .titleSmall!
-                                  .copyWith(fontWeight: FontWeight.bold)),
+                                  .bodySmall!
+                                  .copyWith(fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -237,7 +246,7 @@ class _Discover extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 20,
                   backgroundColor: Color.fromARGB(177, 114, 53, 31),
-                  child:  Icon(
+                  child: Icon(
                     Icons.tune,
                     color: Colors.white,
                   ),
