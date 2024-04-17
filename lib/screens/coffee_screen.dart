@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../models/model.dart';
 
@@ -75,188 +76,208 @@ class _CoffeeBody extends StatefulWidget {
 
 class _CoffeeBodyState extends State<_CoffeeBody> {
   bool _showOverflow = false;
+
+  Set<String> _selectedSize = <String>{"Small"};
+  void updateSelectedSize(Set<String> newselection) {
+    setState(() {
+      _selectedSize = newselection;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    List<String> sizes = [
-      "Small",
-      "Medium",
-      "Large",
-    ];
-    return DefaultTabController(
-      initialIndex: 0,
-      length: sizes.length,
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5),
-              padding: const EdgeInsets.all(5.0),
-              height: MediaQuery.of(context).size.height * 0.09,
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5),
+            padding: const EdgeInsets.all(5.0),
+            height: 50,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Center(
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: widget.coffee.moreDescription.length,
+                itemBuilder: (context, index) {
+                  String title = widget.coffee.moreDescription[index];
+                  String styledTitle =
+                      title.substring(0, 1).toUpperCase() + title.substring(1);
+                  return _TasteProfile(
+                    title: styledTitle,
+                    icon: widget.coffee.moreIcons[index],
+                  );
+                },
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
+            child: Text(
+              'Coffee Size',
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          // segmented button
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width *
+                  0.9, // Specify the desired width
+              // Specify the desired height
+              child: SegmentedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Colors.grey.shade300),
+                  foregroundColor: MaterialStateProperty.all(Colors.black),
+                  elevation: MaterialStateProperty.all(0),
+                  textStyle: MaterialStateProperty.all(
+                    Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Colors.black,
+                        ),
+                  ),
+                  padding: MaterialStateProperty.all(
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                  ),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                  ),
+                ),
+                selectedIcon: Icon(Icons.check, color: Colors.green.shade800),
+                segments: const <ButtonSegment<String>>[
+                  ButtonSegment<String>(
+                    value: 'Small',
+                    label: Text('Small'),
+                  ),
+                  ButtonSegment<String>(
+                    value: 'Medium',
+                    label: Text('Medium'),
+                  ),
+                  ButtonSegment<String>(
+                    value: 'Large',
+                    label: Text('Large'),
+                  ),
+                ],
+                selected: _selectedSize,
+                onSelectionChanged: updateSelectedSize,
+              ),
+            ),
+          ),
+
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: Text(
+              'About',
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _showOverflow = !_showOverflow;
+                });
+              },
+              child: Text(
+                widget.coffee.about,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  height: 1.5,
+                ),
+                maxLines: _showOverflow ? null : 4,
+                overflow: _showOverflow ? null : TextOverflow.ellipsis,
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ),
+          if (!_showOverflow)
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  _showOverflow = true;
+                });
+              },
+              child: Text(
+                'Read More',
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Colors.green.shade800,
+                    ),
+              ),
+            ),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Container(
+              height: 70,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(30),
+                color: Colors.green.shade800,
+                borderRadius: BorderRadius.circular(50),
               ),
-              child: Center(
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: widget.coffee.moreDescription.length,
-                  itemBuilder: (context, index) {
-                    String title = widget.coffee.moreDescription[index];
-                    String styledTitle = title.substring(0, 1).toUpperCase() +
-                        title.substring(1);
-                    return _TasteProfile(
-                      title: styledTitle,
-                      icon: widget.coffee.moreIcons[index],
-                    );
-                  },
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
-              child: Text(
-                'Coffee Size',
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Material(
-              color: Colors.transparent,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                child: TabBar(
-                  splashFactory: NoSplash.splashFactory,
-                  isScrollable: true,
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  indicator: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Colors.green.shade800,
-                  ),
-                  labelPadding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  unselectedLabelColor: Colors.black,
-                  labelColor: Colors.white,
-                  tabs: sizes
-                      .map(
-                        (e) => Tab(
-                          text: e,
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
-              child: Text(
-                'About',
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Add to Cart',
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _showOverflow = !_showOverflow;
-                  });
-                },
-                child: Text(
-                  widget.coffee.about,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    height: 1.5,
-                  ),
-                  maxLines: _showOverflow ? null : 3,
-                  overflow: _showOverflow ? null : TextOverflow.ellipsis,
-                  textAlign: TextAlign.left,
+                    Container(
+                        width: 2,
+                        height: 20,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20))),
+                    Text(
+                      widget.coffee.price,
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            if (!_showOverflow)
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _showOverflow = true;
-                  });
-                },
-                child: Text(
-                  'Read More',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: Colors.green.shade800,
-                      ),
-                ),
-              ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Container(
-                height: 70,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.green.shade800,
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Add to Cart',
-                        style:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                      ),
-                      Container(
-                          width: 2,
-                          height: 20,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20))),
-                      Text(
-                        widget.coffee.price,
-                        style:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -275,10 +296,16 @@ class _TasteProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
-      child: SizedBox(
+      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.grey.shade300,
+        ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FaIcon(
               icon.icon,
@@ -298,12 +325,6 @@ class _TasteProfile extends StatelessWidget {
             const SizedBox(
               width: 5,
             ),
-            Container(
-                width: 2,
-                height: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey.shade800,
-                    borderRadius: BorderRadius.circular(20)))
           ],
         ),
       ),

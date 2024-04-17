@@ -129,8 +129,8 @@ class _Categories extends StatelessWidget {
             color: Colors.transparent,
             child: TabBar(
               splashFactory: NoSplash.splashFactory,
-              isScrollable: true,
               indicatorSize: TabBarIndicatorSize.tab,
+             indicatorColor: Colors.transparent,
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: Colors.green.shade800,
@@ -141,17 +141,26 @@ class _Categories extends StatelessWidget {
                   .map(
                     (e) => Tab(
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment
+                            .start, // Adjust MainAxisAlignment
                         children: [
                           Icon(
                             icons[tabs.indexOf(e)],
                           ),
-                          const SizedBox(width: 10),
-                          Text(e,
+                          const SizedBox(
+                            width: 1,
+                          ),
+                          Expanded(
+                            child: Text(
+                              e,
+                              overflow:
+                                  TextOverflow.ellipsis, // Handle overflow
                               style: Theme.of(context)
                                   .textTheme
-                                  .titleSmall!
-                                  .copyWith(fontWeight: FontWeight.bold)),
+                                  .bodySmall!
+                                  .copyWith(fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -232,21 +241,21 @@ class _Discover extends StatelessWidget {
                 Icons.search,
                 color: Colors.black,
               ),
-              suffixIcon: Container(
-                margin: const EdgeInsets.only(right: 5, bottom: 5, top: 5),
-                padding: const EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(177, 114, 53, 31),
-                  borderRadius:
-                      BorderRadius.circular(20), // half of the width or height
-                ),
-                child: const Icon(
-                  Icons.tune,
-                  color: Colors.white,
+              suffixIcon: const Padding(
+                padding: EdgeInsets.only(right: 5.0),
+                child: CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Color.fromARGB(177, 114, 53, 31),
+                  child: Icon(
+                    Icons.tune,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               filled: true,
               fillColor: Colors.grey.shade200,
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25),
                 borderSide: BorderSide.none,
