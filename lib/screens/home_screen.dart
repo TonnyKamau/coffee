@@ -232,21 +232,21 @@ class _Discover extends StatelessWidget {
                 Icons.search,
                 color: Colors.black,
               ),
-              suffixIcon: Container(
-                margin: const EdgeInsets.only(right: 5, bottom: 5, top: 5),
-                padding: const EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(177, 114, 53, 31),
-                  borderRadius:
-                      BorderRadius.circular(20), // half of the width or height
-                ),
-                child: const Icon(
-                  Icons.tune,
-                  color: Colors.white,
+              suffixIcon: const Padding(
+                padding: EdgeInsets.only(right: 5.0),
+                child: CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Color.fromARGB(177, 114, 53, 31),
+                  child:  Icon(
+                    Icons.tune,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               filled: true,
               fillColor: Colors.grey.shade200,
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25),
                 borderSide: BorderSide.none,
