@@ -214,7 +214,7 @@ class _CoffeeBodyState extends State<_CoffeeBody> {
                   fontSize: 16,
                   height: 1.5,
                 ),
-                maxLines: _showOverflow ? null : 3,
+                maxLines: _showOverflow ? null : 4,
                 overflow: _showOverflow ? null : TextOverflow.ellipsis,
                 textAlign: TextAlign.left,
               ),
