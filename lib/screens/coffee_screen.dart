@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../models/model.dart';
 
@@ -145,18 +144,18 @@ class _CoffeeBodyState extends State<_CoffeeBody> {
               child: SegmentedButton(
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all(Colors.grey.shade300),
-                  foregroundColor: MaterialStateProperty.all(Colors.black),
-                  elevation: MaterialStateProperty.all(0),
-                  textStyle: MaterialStateProperty.all(
+                      WidgetStateProperty.all(Colors.grey.shade300),
+                  foregroundColor: WidgetStateProperty.all(Colors.black),
+                  elevation: WidgetStateProperty.all(0),
+                  textStyle: WidgetStateProperty.all(
                     Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Colors.black,
                         ),
                   ),
-                  padding: MaterialStateProperty.all(
+                  padding: WidgetStateProperty.all(
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
                   ),
-                  shape: MaterialStateProperty.all(
+                  shape: WidgetStateProperty.all(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),

@@ -96,7 +96,6 @@ class _PromotionImage extends StatelessWidget {
   final double height;
   final double width;
   final String imageUrl;
-
   final EdgeInsets? padding;
   final EdgeInsets? margin;
   final double? borderRadius;
